@@ -15,7 +15,7 @@ export default class MathCharacter {
 
     this.distance = 1;
     this._stoned = false;
-    // this._attack = математический пример линейного падения;
+    this._attack = 0;
   }
 
   set stoned(value) {
@@ -27,10 +27,10 @@ export default class MathCharacter {
   }
 
   set attack(value) {
-    if (this._stoned) {
+    if (this._stoned === true) {
       this._attack = Math.round(this._attack - Math.log2(this.distance) * 5);
     } else {
-      this._attack = value; // линейно падает???
+      this._attack -= (this._attack * 0.1 * (this.distance - 1));
     }
   }
 
