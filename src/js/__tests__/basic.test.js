@@ -14,6 +14,12 @@ test('invalid type', () => {
   expect(() => new MathCharacter('Лучник', 'bowerman')).toThrow(new Error('Ошибка! Неверный тип персонажа!'));
 });
 
+test('default value of .stoned should be false', () => {
+  const result = new MathCharacter('Лучник', 'bowman');
+
+  expect(result.stoned).toBeFalsy();
+});
+
 test('attack should change depending on .stoned', () => {
   const magician = new Magician('Маг', 'magician');
   const daemon = new Daemon('Демон', 'daemon');

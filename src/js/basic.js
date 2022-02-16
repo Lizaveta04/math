@@ -12,7 +12,7 @@ export default class MathCharacter {
     } else {
       this.type = type;
     }
-
+    // this._attack можно заменить на this.baseAttack, а this._stoned - на this.baseStoned, или что-нибудь иное (другой префикс), но не нижнее подчёркивание, чтобы линтер не выводил ошибку, либо отключить это правило линтера
     this._attack = 0;
     this.distance = 1;
     this._stoned = false;
@@ -31,10 +31,11 @@ export default class MathCharacter {
   }
 
   get attack() {
-    this._attack -= (this._attack * 0.1 * (this.distance - 1));
+    let result = this._attack;
+    result -= (result * 0.1 * (this.distance - 1));
     if (this._stoned === true) {
-      this._attack = Math.round(this._attack - Math.log2(this.distance) * 5);
+      result = Math.round(result - Math.log2(this.distance) * 5);
     }
-    return this._attack;
+    return result;
   }
 }
